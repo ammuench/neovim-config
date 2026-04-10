@@ -1,0 +1,40 @@
+return {
+	"nvim-neo-tree/neo-tree.nvim",
+	branch = "v3.x",
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"MunifTanjim/nui.nvim",
+		"antosha417/nvim-lsp-file-operations",
+    "echasnovski/mini.icons"
+	},
+	keys = {
+		{ "<Leader>e", "<cmd>Neotree toggle<cr>", desc = "Toggle neo-tree" },
+		{
+			"<Leader>o",
+			function()
+				if vim.bo.filetype == "neo-tree" then
+					vim.cmd.wincmd("p")
+				else
+					vim.cmd("Neotree focus")
+				end
+			end,
+			desc = "Toggle neo-tree focus",
+		},
+	},
+	opts = {
+		filesystem = {
+			filtered_items = {
+				visible = true,
+				show_hidden_count = true,
+				hide_dotfiles = false,
+				hide_gitignored = false,
+			},
+		},
+		window = {
+			mappings = {
+				["h"] = "close_node",
+				["l"] = "open",
+			},
+		},
+	},
+}
