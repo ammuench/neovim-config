@@ -97,6 +97,7 @@ return {
 	},
 	opts = {
 		picker = { enabled = true },
+    indent = { enabled = true },
 		notifier = { enabled = true },
 		lazygit = { enabled = true },
 		git = { enabled = true },
