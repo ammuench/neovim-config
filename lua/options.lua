@@ -17,6 +17,7 @@ opt.termguicolors = true
 opt.cursorline = true
 opt.scrolloff = 8
 opt.foldlevel = 99
+opt.fillchars = { eob = ' ' }
 
 -- Search
 opt.ignorecase = true
@@ -32,3 +33,4 @@ opt.clipboard = 'unnamedplus'
 opt.undofile = true
 opt.swapfile = false
 opt.updatetime = 250
+opt.cmdheight = 0

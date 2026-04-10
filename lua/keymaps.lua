@@ -2,6 +2,7 @@ local map = vim.keymap.set
 
 -- Save / Quit
 map('n', '<Leader>w', '<cmd>w<cr>', { desc = 'Save' })
+map('n', '<C-s>', '<cmd>w<cr>', { desc = 'Save' })
 map('n', '<Leader>q', '<cmd>q<cr>', { desc = 'Quit' })
 map('n', '<Leader>n', '<cmd>enew<cr>', { desc = 'New file' })
 
@@ -18,6 +19,10 @@ map('n', '<C-h>', '<C-w>h', { desc = 'Move to left split' })
 map('n', '<C-j>', '<C-w>j', { desc = 'Move to below split' })
 map('n', '<C-k>', '<C-w>k', { desc = 'Move to above split' })
 map('n', '<C-l>', '<C-w>l', { desc = 'Move to right split' })
+
+-- Visual mode indenting (keep selection after indent)
+map('v', '<Tab>', '>gv', { desc = 'Indent' })
+map('v', '<S-Tab>', '<gv', { desc = 'Outdent' })
 
 -- Buffer management (requires snacks.nvim — wired in Phase 1)
 -- map('n', '<Leader>c', function() Snacks.bufdelete() end, { desc = 'Close buffer' })

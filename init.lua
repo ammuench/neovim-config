@@ -1,8 +1,7 @@
--- init.lua
-
 -- Set leader keys before anything else (must be before lazy.nvim)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ','
+
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim'
