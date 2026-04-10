@@ -1,5 +1,9 @@
 local M = {}
 
+-- Add cache to prevent re-running on every cache command.
+-- Once per project should be good enough
+M._cache = {}
+
 -- Filetypes biome doesn't support
 M.biome_unsupported = {
   scss = true,
@@ -12,40 +16,33 @@ M.biome_unsupported = {
 M.web_formatter = function(bufnr)
   local root = vim.fn.getcwd()
 
+  if M._cache[root] then
+    return M._cache[root]
+  end
+
+  local result
+
   -- oxfmt config present?
   if #vim.fs.find({ '.oxfmt.toml', 'oxfmt.toml' }, { path = root }) > 0 then
-    return { 'oxfmt' }
-  end
-
+    result = { 'oxfmt' }
   -- prettier config present?
-  local prettier_configs = {
-    '.prettierrc',
-    '.prettierrc.json',
-    '.prettierrc.yml',
-    '.prettierrc.yaml',
-    '.prettierrc.json5',
-    '.prettierrc.js',
-    '.prettierrc.cjs',
-    '.prettierrc.mjs',
-    '.prettierrc.toml',
-    'prettier.config.js',
-    'prettier.config.cjs',
-    'prettier.config.mjs',
-  }
-  if #vim.fs.find(prettier_configs, { path = root }) > 0 then
-    return { 'prettierd', 'prettier', stop_after_first = true }
-  end
-
+  elseif #vim.fs.find({
+    '.prettierrc', '.prettierrc.json', '.prettierrc.yml', '.prettierrc.yaml',
+    '.prettierrc.json5', '.prettierrc.js', '.prettierrc.cjs', '.prettierrc.mjs',
+    '.prettierrc.toml', 'prettier.config.js', 'prettier.config.cjs', 'prettier.config.mjs',
+  }, { path = root }) > 0 then
+    result = { 'prettierd', 'prettier', stop_after_first = true }
   -- biome config present? (skip for unsupported filetypes)
-  local ft = vim.bo[bufnr].filetype
-  if not M.biome_unsupported[ft] then
-    if #vim.fs.find({ 'biome.json', 'biome.jsonc' }, { path = root }) > 0 then
-      return { 'biome' }
-    end
+  elseif not M.biome_unsupported[vim.bo[bufnr].filetype]
+    and #vim.fs.find({ 'biome.json', 'biome.jsonc' }, { path = root }) > 0 then
+    result = { 'biome' }
+  else
+    -- fallback: oxfmt
+    result = { 'oxfmt' }
   end
 
-  -- fallback: oxfmt
-  return { 'oxfmt' }
+  M._cache[root] = result
+  return result
 end
 
 return M

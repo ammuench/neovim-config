@@ -41,10 +41,35 @@ typescript_module.setup = function(lsp_utils)
 		end,
 	})
 
+	-- biome 
+	lspconfig.biome.setup({
+		on_attach = lsp_utils.on_attach,
+		capabilities = capabilities,
+		root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc"),
+	})
+
+	-- oxlint
+	lspconfig.oxlint.setup({
+		on_attach = lsp_utils.on_attach,
+		capabilities = capabilities,
+		root_dir = lspconfig.util.root_pattern(".oxlintrc.json", "oxlint.config.ts"),
+	})
+
 	-- eslint
 	lspconfig.eslint.setup({
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
+		root_dir = lspconfig.util.root_pattern(
+			".eslintrc",
+			".eslintrc.js",
+			".eslintrc.cjs",
+			".eslintrc.json",
+			".eslintrc.yml",
+			".eslintrc.yaml",
+			"eslint.config.js",
+			"eslint.config.mjs",
+			"eslint.config.cjs"
+		),
 	})
 
 	-- volar (Vue)
