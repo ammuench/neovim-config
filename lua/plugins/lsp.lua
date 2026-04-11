@@ -5,7 +5,6 @@ return {
 		"williamboman/mason.nvim",
 	},
 	config = function()
-		local lspconfig = require("lspconfig")
 		local lsp_utils = require("utils.lsp")
 
 		local default_config = {
@@ -26,8 +25,9 @@ return {
 		}
 
 		for _, server in ipairs(simple_servers) do
-			lspconfig[server].setup(default_config)
+			vim.lsp.config(server, default_config)
 		end
+		vim.lsp.enable(simple_servers)
 
 		-- Language-specific setups
 		require("lsps.lang-typescript").setup(lsp_utils)

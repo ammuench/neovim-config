@@ -1,21 +1,20 @@
 local typescript_module = {}
 
 typescript_module.setup = function(lsp_utils)
-	local lspconfig = require("lspconfig")
 	local capabilities = lsp_utils.capabilities()
 
 	-- vtsls
-	lspconfig.vtsls.setup({
+	vim.lsp.config("vtsls", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
-		root_dir = lspconfig.util.root_pattern("package.json", "tsconfig.json", "jsconfig.json"),
+		root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
 	})
 
 	-- denols
-	lspconfig.denols.setup({
+	vim.lsp.config("denols", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
-		root_dir = lspconfig.util.root_pattern("deno.json", "deno.jsonc"),
+		root_markers = { "deno.json", "deno.jsonc" },
 	})
 
 	-- Deno ↔ vtsls switcher
@@ -41,25 +40,25 @@ typescript_module.setup = function(lsp_utils)
 		end,
 	})
 
-	-- biome 
-	lspconfig.biome.setup({
+	-- biome
+	vim.lsp.config("biome", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
-		root_dir = lspconfig.util.root_pattern("biome.json", "biome.jsonc"),
+		root_markers = { "biome.json", "biome.jsonc" },
 	})
 
 	-- oxlint
-	lspconfig.oxlint.setup({
+	vim.lsp.config("oxlint", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
-		root_dir = lspconfig.util.root_pattern(".oxlintrc.json", "oxlint.config.ts"),
+		root_markers = { ".oxlintrc.json", "oxlint.config.ts" },
 	})
 
 	-- eslint
-	lspconfig.eslint.setup({
+	vim.lsp.config("eslint", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
-		root_dir = lspconfig.util.root_pattern(
+		root_markers = {
 			".eslintrc",
 			".eslintrc.js",
 			".eslintrc.cjs",
@@ -68,15 +67,17 @@ typescript_module.setup = function(lsp_utils)
 			".eslintrc.yaml",
 			"eslint.config.js",
 			"eslint.config.mjs",
-			"eslint.config.cjs"
-		),
+			"eslint.config.cjs",
+		},
 	})
 
 	-- volar (Vue)
-	lspconfig.volar.setup({
+	vim.lsp.config("volar", {
 		on_attach = lsp_utils.on_attach,
 		capabilities = capabilities,
 	})
+
+	vim.lsp.enable({ "vtsls", "denols", "biome", "oxlint", "eslint", "volar" })
 end
 
 return typescript_module

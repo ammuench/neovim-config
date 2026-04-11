@@ -32,6 +32,13 @@ return {
 			end,
 			desc = "Find recent files",
 		},
+		{
+			"<Leader>f<CR>",
+			function()
+				Snacks.picker.resume()
+			end,
+			desc = "Resume last picker",
+		},
 
 		-- Buffer management
 		{
@@ -97,7 +104,7 @@ return {
 	},
 	opts = {
 		picker = { enabled = true },
-    indent = { enabled = true },
+		indent = { enabled = true },
 		notifier = { enabled = true },
 		lazygit = { enabled = true },
 		git = { enabled = true },
