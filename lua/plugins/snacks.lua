@@ -1,5 +1,4 @@
 ---@module "snacks"
-local Snacks = require("snacks")
 
 return {
   "folke/snacks.nvim",
