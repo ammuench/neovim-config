@@ -60,7 +60,7 @@ return {
 
     -- Git
     {
-      "<Leader>gl",
+      "<Leader>gL",
       function()
         Snacks.git.blame_line()
       end,
