@@ -67,6 +67,7 @@ lua/
 | **highlight-colors** | Inline color previews (including Tailwind) |
 | **toggleterm.nvim** | Floating terminal |
 | **lazydev.nvim** | Lua LSP support for Neovim plugin development |
+| **git-conflict.nvim** | Inline merge conflict resolution |
 | **mini.icons** | File/devicon provider |
 
 ## Language Support
@@ -154,6 +155,17 @@ Leader key is **Space**. Local leader is **,**.
 | `<Leader>gR` | Reset current file |
 | `<Leader>gc` | Git commits (all) |
 | `<Leader>gC` | Git commits (current file) |
+
+### Git Conflicts (git-conflict.nvim)
+
+| Key | Action |
+|---|---|
+| `co` | Choose ours (current) |
+| `ct` | Choose theirs (incoming) |
+| `cb` | Choose both |
+| `c0` | Choose none |
+| `]x` | Next conflict |
+| `[x` | Previous conflict |
 
 ### LSP
 
