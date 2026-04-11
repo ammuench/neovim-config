@@ -25,7 +25,16 @@ return {
     },
     completion = {
       accept = { auto_brackets = { enabled = true } },
-      documentation = { auto_show = true },
+      documentation = {
+        auto_show = true,
+        window = { border = 'rounded' },
+      },
+      menu = {
+        border = 'rounded',
+        draw = {
+          padding = { 1, 1 },
+        },
+      },
     },
     sources = {
       default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },

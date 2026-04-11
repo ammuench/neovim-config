@@ -5,6 +5,10 @@ return {
 		"williamboman/mason.nvim",
 	},
 	config = function()
+		vim.diagnostic.config({
+			float = { border = "rounded" },
+		})
+
 		local lsp_utils = require("utils.lsp")
 
 		local default_config = {
