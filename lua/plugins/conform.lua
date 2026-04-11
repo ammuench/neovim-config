@@ -1,14 +1,14 @@
 return {
-  'stevearc/conform.nvim',
-  event = { 'BufReadPre', 'BufNewFile' },
+  "stevearc/conform.nvim",
+  event = { "BufReadPre", "BufNewFile" },
   config = function()
-    local formatting = require('utils.formatting')
+    local formatting = require("utils.formatting")
 
-    require('conform').setup({
+    require("conform").setup({
       format_on_save = false,
       formatters_by_ft = {
-        lua = { 'stylua' },
-        go = { 'gofmt' },
+        lua = { "stylua" },
+        go = { "gofmt" },
         javascript = formatting.web_formatter,
         javascriptreact = formatting.web_formatter,
         typescript = formatting.web_formatter,
@@ -27,8 +27,8 @@ return {
     })
 
     -- <Leader>F keymap
-    vim.keymap.set('n', '<Leader>F', function()
-      require('conform').format({ async = true })
-    end, { desc = 'Format buffer' })
+    vim.keymap.set("n", "<Leader>F", function()
+      require("conform").format({ async = true })
+    end, { desc = "Format buffer" })
   end,
 }

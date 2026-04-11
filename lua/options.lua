@@ -11,13 +11,13 @@ opt.expandtab = true
 opt.smartindent = true
 
 -- UI
-opt.signcolumn = 'yes'
+opt.signcolumn = "yes"
 opt.wrap = false
 opt.termguicolors = true
 opt.cursorline = true
 opt.scrolloff = 8
 opt.foldlevel = 99
-opt.fillchars = { eob = ' ' }
+opt.fillchars = { eob = " " }
 
 -- Search
 opt.ignorecase = true
@@ -29,7 +29,7 @@ opt.splitright = true
 opt.splitbelow = true
 
 -- System
-opt.clipboard = 'unnamedplus'
+opt.clipboard = "unnamedplus"
 opt.undofile = true
 opt.swapfile = false
 opt.updatetime = 250
