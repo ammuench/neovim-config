@@ -140,6 +140,7 @@ Leader key is **Space**. Local leader is **,**.
 
 | Key | Action |
 |---|---|
+| `<Leader>bb` | Pick buffer (hint labels) |
 | `<Leader>c` | Close buffer |
 | `<Leader>C` | Force close buffer |
 
@@ -150,6 +151,7 @@ Leader key is **Space**. Local leader is **,**.
 | `<Leader>gg` | Lazygit |
 | `<Leader>gl` | Blame line (gitsigns hover) |
 | `<Leader>gL` | Blame line (snacks) |
+| `<Leader>gR` | Reset current file |
 | `<Leader>gc` | Git commits (all) |
 | `<Leader>gC` | Git commits (current file) |
 

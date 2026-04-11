@@ -9,6 +9,13 @@ return {
       end,
       desc = "Git blame line (hover)",
     },
+    {
+      "<Leader>gR",
+      function()
+        require("gitsigns").reset_buffer()
+      end,
+      desc = "Git reset current file",
+    },
   },
   opts = {
     preview_config = { border = "rounded" },

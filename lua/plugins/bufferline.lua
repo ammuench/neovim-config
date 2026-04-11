@@ -1,6 +1,9 @@
 return {
   "akinsho/bufferline.nvim",
   event = "VeryLazy",
+  keys = {
+    { "<Leader>bb", "<cmd>BufferLinePick<cr>", desc = "Pick buffer" },
+  },
   opts = {
     options = {
       diagnostics = "nvim_lsp",
