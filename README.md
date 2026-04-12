@@ -2,6 +2,9 @@
 
 Personal Neovim configuration built on [lazy.nvim](https://github.com/folke/lazy.nvim) with a focus on web development (TypeScript, Vue, Astro, Go, Rust, Lua).
 
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/0b14c9d2-6556-4398-8339-a1b47bb1f3eb" />
+
+
 ## Requirements
 
 - Neovim >= 0.12
