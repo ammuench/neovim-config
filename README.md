@@ -20,6 +20,9 @@ mv ~/.config/nvim ~/.config/nvim.bak
 # Clone this repo
 git clone <repo-url> ~/.config/nvim
 
+# Install Lefthook pre-commit hooks for repo (to keep diffs clean, optional)
+cd ~/.config/nvim && lefthook install
+
 # Launch Neovim — lazy.nvim bootstraps itself and installs all plugins
 nvim
 ```
@@ -164,6 +167,8 @@ Leader key is **Space**. Local leader is **,**.
 | `<Leader>bb` | Pick buffer (hint labels) |
 | `<Leader>c` | Close buffer |
 | `<Leader>C` | Force close buffer |
+| `<Leader>bc` | Close other buffers |
+| `<Leader>bC` | Close all buffers |
 
 ### Git
 

@@ -57,6 +57,20 @@ return {
       end,
       desc = "Force close buffer",
     },
+    {
+      "<Leader>bC",
+      function()
+        Snacks.bufdelete.all()
+      end,
+      desc = "Close all buffers",
+    },
+    {
+      "<Leader>bc",
+      function()
+        Snacks.bufdelete.other()
+      end,
+      desc = "Close other buffers",
+    },
 
     -- Git
     {
