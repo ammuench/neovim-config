@@ -26,6 +26,26 @@ nvim
 
 Mason will auto-install the configured language servers, linters, and formatters on first launch.
 
+### Troubleshooting
+
+**`loop or previous error loading module 'vim.treesitter'` on first launch**
+
+Means `nvim-treesitter` got checked out on an old `master`-branch commit whose `plugin/` and `queries/` collide with Neovim 0.12's built-in `vim.treesitter`. This config pins `nvim-treesitter` to the `main` branch in `lazy-lock.json`, but if the lockfile is stale or a prior install pulled master, you'll hit this.
+
+Fix:
+
+```
+:Lazy update nvim-treesitter
+```
+
+Or, if that's stubborn, wipe the plugin dir and relaunch:
+
+```bash
+rm -rf ~/.local/share/nvim/lazy/nvim-treesitter
+```
+
+Confirm `lazy-lock.json` has `"branch": "main"` for `nvim-treesitter` and commit the updated lockfile so other machines pick up the right commit on first clone.
+
 ## Structure
 
 ```
