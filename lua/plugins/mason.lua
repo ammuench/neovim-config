@@ -26,6 +26,7 @@ return {
         "oxlint",
 
         -- formatters
+        "oxfmt",
         "prettierd",
         "stylua",
 
