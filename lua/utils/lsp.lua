@@ -5,6 +5,7 @@ lsp_module.on_attach = function(client, bufnr)
     vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
   end
 
+  map("gd", vim.lsp.buf.definition, "Go to definition")
   map("<Leader>gd", vim.lsp.buf.definition, "Go to definition")
   map("<Leader>lR", vim.lsp.buf.references, "Show all references")
   map("K", function()
