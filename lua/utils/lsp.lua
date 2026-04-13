@@ -14,7 +14,7 @@ lsp_module.on_attach = function(client, bufnr)
   map("<Leader>la", vim.lsp.buf.code_action, "Code actions")
   map("<Leader>lr", vim.lsp.buf.rename, "Rename symbol")
   map("gl", function()
-    vim.diagnostic.open_float({ border = "rounded" })
+    vim.diagnostic.open_float({ border = "rounded", source = true })
   end, "Hover diagnostics")
   map("<Leader>R", "<cmd>LspRestart<cr>", "LSP Restart")
 end
