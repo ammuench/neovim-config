@@ -22,7 +22,6 @@ return {
 
         -- linters
         "biome",
-        "eslint-lsp",
         "oxlint",
 
         -- formatters

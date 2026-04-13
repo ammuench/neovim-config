@@ -75,22 +75,8 @@ typescript_module.setup = function(lsp_utils)
     root_markers = { ".oxlintrc.json", "oxlint.config.ts" },
   })
 
-  -- eslint
-  vim.lsp.config("eslint", {
-    on_attach = lsp_utils.on_attach,
-    capabilities = capabilities,
-    root_markers = {
-      ".eslintrc",
-      ".eslintrc.js",
-      ".eslintrc.cjs",
-      ".eslintrc.json",
-      ".eslintrc.yml",
-      ".eslintrc.yaml",
-      "eslint.config.js",
-      "eslint.config.mjs",
-      "eslint.config.cjs",
-    },
-  })
+  -- NOTE: ESLint is handled by the nvim-eslint plugin (esmuellert/nvim-eslint).
+  -- Do NOT add an eslint config here — it will conflict with the plugin's LSP client.
 
   -- vue_ls (Vue)
   vim.lsp.config("vue_ls", {
@@ -123,7 +109,7 @@ typescript_module.setup = function(lsp_utils)
     end,
   })
 
-  vim.lsp.enable({ "vtsls", "denols", "biome", "oxlint", "eslint", "vue_ls" })
+  vim.lsp.enable({ "vtsls", "denols", "biome", "oxlint", "vue_ls" })
 end
 
 return typescript_module
