@@ -35,3 +35,11 @@ opt.undofile = true
 opt.swapfile = false
 opt.updatetime = 250
 opt.cmdheight = 0
+
+-- Flash yanked text
+vim.api.nvim_create_autocmd("TextYankPost", {
+  group = vim.api.nvim_create_augroup("highlight_yank", { clear = true }),
+  callback = function()
+    vim.hl.on_yank({ timeout = 100 })
+  end,
+})
