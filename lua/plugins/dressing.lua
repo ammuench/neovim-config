@@ -1,5 +1,7 @@
 return {
   "stevearc/dressing.nvim",
   event = "VeryLazy",
-  opts = {},
+  opts = {
+    select = { enabled = false },
+  },
 }

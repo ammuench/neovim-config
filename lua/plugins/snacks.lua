@@ -119,7 +119,7 @@ return {
     },
   },
   opts = {
-    picker = { enabled = true },
+    picker = { enabled = true, ui_select = true },
     indent = { enabled = true },
     notifier = { enabled = true },
     lazygit = { enabled = true },
