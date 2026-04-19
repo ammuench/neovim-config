@@ -13,6 +13,7 @@ opt.smartindent = true
 -- UI
 opt.signcolumn = "yes"
 opt.wrap = false
+opt.linebreak = true
 opt.termguicolors = true
 opt.cursorline = true
 opt.scrolloff = 8

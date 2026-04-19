@@ -31,7 +31,10 @@ map("n", "<Leader>/", "gcc", { desc = "Toggle comment", remap = true })
 map("v", "<Leader>/", "gc", { desc = "Toggle comment", remap = true })
 
 -- UI toggles
-map("n", "<Leader>uw", "<cmd>set wrap!<cr>", { desc = "Toggle wrap" })
+map("n", "<Leader>uw", function()
+  vim.opt.wrap = not vim.opt.wrap:get()
+  vim.opt.linebreak = vim.opt.wrap:get()
+end, { desc = "Toggle wrap (break on word)" })
 map("n", "<Leader>ud", function()
   vim.diagnostic.enable(not vim.diagnostic.is_enabled())
 end, { desc = "Toggle diagnostics" })
