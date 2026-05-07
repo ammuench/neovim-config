@@ -6,6 +6,7 @@ return {
       { "<Leader>f", group = "Find" },
       { "<Leader>g", group = "Git" },
       { "<Leader>l", group = "LSP" },
+      { "<Leader>M", group = "Markdown" },
       { "<Leader>t", group = "Terminal" },
       { "<Leader>u", group = "UI toggles" },
     },
