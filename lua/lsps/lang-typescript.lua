@@ -18,6 +18,7 @@ typescript_module.setup = function(lsp_utils)
     settings = {
       vtsls = {
         tsserver = {
+          maxTsServerMemory = 8192,
           globalPlugins = {
             {
               name = "@vue/typescript-plugin",
@@ -26,6 +27,26 @@ typescript_module.setup = function(lsp_utils)
               configNamespace = "typescript",
             },
           },
+        },
+      },
+      typescript = {
+        preferences = {
+          includePackageJsonAutoImports = "off",
+        },
+        tsserver = {
+          watchOptions = {
+            watchFile = "useFsEvents",
+            watchDirectory = "useFsEvents",
+            fallbackPolling = "dynamicPriority",
+          },
+          experimental = {
+            enableProjectDiagnostics = false,
+          },
+        },
+      },
+      javascript = {
+        preferences = {
+          includePackageJsonAutoImports = "off",
         },
       },
     },
