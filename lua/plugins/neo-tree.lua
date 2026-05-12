@@ -39,7 +39,21 @@ return {
       mappings = {
         ["h"] = "close_node",
         ["l"] = "open",
+        ["gr"] = "grep_in_node",
+        ["gf"] = "find_in_node",
       },
+    },
+    commands = {
+      grep_in_node = function(state)
+        local node = state.tree:get_node()
+        local path = node.type == "directory" and node:get_id() or vim.fn.fnamemodify(node:get_id(), ":h")
+        Snacks.picker.grep({ dirs = { path } })
+      end,
+      find_in_node = function(state)
+        local node = state.tree:get_node()
+        local path = node.type == "directory" and node:get_id() or vim.fn.fnamemodify(node:get_id(), ":h")
+        Snacks.picker.files({ dirs = { path } })
+      end,
     },
   },
   init = function()
