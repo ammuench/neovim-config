@@ -13,17 +13,19 @@ M.biome_unsupported = {
 
 -- Detect which web formatter to use per buffer
 -- Priority: oxfmt config → prettier config → biome config → oxfmt fallback
+-- Walks upward from the buffer's file so nested monorepo configs win over root.
 M.web_formatter = function(bufnr)
-  local root = vim.fn.getcwd()
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+  local start = bufname ~= "" and vim.fs.dirname(bufname) or vim.fn.getcwd()
 
-  if M._cache[root] then
-    return M._cache[root]
+  if M._cache[start] then
+    return M._cache[start]
   end
 
   local result
 
   -- oxfmt config present?
-  if #vim.fs.find({ ".oxfmt.toml", "oxfmt.toml" }, { path = root }) > 0 then
+  if #vim.fs.find({ ".oxfmt.toml", "oxfmt.toml" }, { path = start, upward = true }) > 0 then
     result = { "oxfmt" }
   -- prettier config present?
   elseif
@@ -40,13 +42,13 @@ M.web_formatter = function(bufnr)
       "prettier.config.js",
       "prettier.config.cjs",
       "prettier.config.mjs",
-    }, { path = root }) > 0
+    }, { path = start, upward = true }) > 0
   then
     result = { "prettierd", "prettier", stop_after_first = true }
   -- biome config present? (skip for unsupported filetypes)
   elseif
     not M.biome_unsupported[vim.bo[bufnr].filetype]
-    and #vim.fs.find({ "biome.json", "biome.jsonc" }, { path = root }) > 0
+    and #vim.fs.find({ "biome.json", "biome.jsonc" }, { path = start, upward = true }) > 0
   then
     result = { "biome" }
   else
@@ -54,7 +56,7 @@ M.web_formatter = function(bufnr)
     result = { "oxfmt" }
   end
 
-  M._cache[root] = result
+  M._cache[start] = result
   return result
 end
 
