@@ -11,6 +11,15 @@ M.biome_unsupported = {
   yaml = true,
 }
 
+-- Is there a biome config upward from this buffer's file?
+-- Same detection web_formatter uses, exposed for filetype-specific rules
+-- (e.g. only run biome's import sorting on astro when the project uses biome).
+M.has_biome_config = function(bufnr)
+  local bufname = vim.api.nvim_buf_get_name(bufnr)
+  local start = bufname ~= "" and vim.fs.dirname(bufname) or vim.fn.getcwd()
+  return #vim.fs.find({ "biome.json", "biome.jsonc" }, { path = start, upward = true }) > 0
+end
+
 -- Detect which web formatter to use per buffer
 -- Priority: oxfmt config → prettier config → biome config → oxfmt fallback
 -- Walks upward from the buffer's file so nested monorepo configs win over root.
